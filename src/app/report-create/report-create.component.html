@@ -1,0 +1,42 @@
+<form #reportForm = ngForm (submit) = "addReport(reportForm.value)">
+	<mz-datepicker-container>
+	  <i mz-icon-mdi mz-input-prefix [icon]="'calendar'"></i>
+	  <input mz-datepicker [label]="'Дата отчета'" [options]="options" ngModel name="date" [(ngModel)]="dateOfReport" id="datepicker" type="text" mz-validation required [errorMessageResource]="errorMessages.date">
+	</mz-datepicker-container>
+
+	<mz-select-container>
+	  <select mz-select
+		id="options-select"
+		[label]="'Проект'"
+		mz-validation required #nameOfReport [errorMessageResource]="errorMessages.name"
+		ngModel name="project"
+	  >
+		<optgroup label="Frontend">
+		<option value="" disabled selected>Выберите проект</option>
+		  <option class="left circle">Project1</option>
+		  <option class="left circle">Project2</option>
+		  <option class="left circle">Project3</option>
+		</optgroup>
+		<optgroup label="Backend">
+		  <option class="left circle">Project4</option>
+		  <option class="left circle">Project5</option>
+		</optgroup>
+		<optgroup label="QA">
+		  <option class="left circle">Project6</option>
+		</optgroup>
+	  </select>
+	</mz-select-container>
+
+	<mz-textarea-container>
+		<i mz-icon-mdi mz-textarea-prefix
+		[icon]="'message-reply-text'">
+	  </i>
+	  <textarea mz-textarea
+		[label]="'Комментарии по работе'"
+		id="comment-textarea" #infoOfReport
+		mz-validation required ngModel name="commentary" 
+		maxlength="150" [errorMessageResource]="errorMessages.comment">
+	  </textarea>
+	</mz-textarea-container>
+	<button class="light-green darken-2" mz-button type = "submit" [disabled] = "reportForm.invalid">Отправить отчет<i class="material-icons right">send</i></button>
+</form>
