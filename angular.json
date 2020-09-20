@@ -123,8 +123,13 @@
               "devServerTarget": "task-manager:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "task-manager"
 }
